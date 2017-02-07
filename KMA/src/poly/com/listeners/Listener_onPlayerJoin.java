@@ -19,11 +19,10 @@ import org.bukkit.scoreboard.Scoreboard;
 import com.poly.KMA.KMA;
 import com.poly.KMA.PlayerStats;
 
-
 public class Listener_onPlayerJoin implements Listener {
 
 	protected KMA plugin;
-	protected Map<String, PlayerStats> players; // Klassenvariable
+	protected Map<String, PlayerStats> players;
 
 	public Listener_onPlayerJoin(KMA plugin, Map<String, PlayerStats> map2) {
 		this.plugin = plugin;
