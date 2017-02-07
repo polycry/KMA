@@ -61,7 +61,19 @@ public class Listener_onPlayerJoin implements Listener {
 				e.printStackTrace();
 			}
 
+			PlayerStats ps = new PlayerStats(p); // laden der Stats in ein
+			// Objekt
+
+			ps.setMoney(cfg.getInt("money"));
+			ps.setRespect(cfg.getInt("respect"));
+			ps.setLvl(cfg.getInt("lvl"));
+			ps.setXp(cfg.getInt("xp"));
+
+			players.put(p.getName(), ps); // Speichern des Objekts mit dem Key
+			// in eine Map
+
 		} else {
+
 			YamlConfiguration cfg = YamlConfiguration.loadConfiguration(file);
 
 			PlayerStats ps = new PlayerStats(p); // laden der Stats in ein
@@ -79,9 +91,8 @@ public class Listener_onPlayerJoin implements Listener {
 											// Map darin ingetragen ist das
 											// StatObjekt.
 
-			ps.setLvl(2);
-			p.sendMessage("Dein Lvl: " + ps.getLvl() + " Dein Respect: " + ps.getRespect() + " Dein Geld: "
-					+ ps.getMoney() + " Deine XP: " + ps.getXp());
+			p.sendMessage(
+					"Dein Lvl: " + ps.getLvl() + " Dein Respect: " + ps.getRespect() + " Dein Geld: " + ps.getMoney());
 
 		}
 	}
@@ -95,9 +106,12 @@ public class Listener_onPlayerJoin implements Listener {
 		int lvl = cfg.getInt("lvl");
 		int money = cfg.getInt("money");
 		int respect = cfg.getInt("respect");
+		int xp = cfg.getInt("xp");
 		objv.setDisplaySlot(DisplaySlot.SIDEBAR);
 		objv.setDisplayName(ChatColor.GOLD + "Stats");
 
+		Score three = objv.getScore(ChatColor.GREEN + "XP: ");
+		three.setScore(xp);		
 		Score two = objv.getScore(ChatColor.GREEN + "Level: ");
 		two.setScore(lvl);
 		Score one = objv.getScore(ChatColor.GREEN + "Geld: ");
