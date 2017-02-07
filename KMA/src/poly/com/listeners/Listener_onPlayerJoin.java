@@ -111,7 +111,7 @@ public class Listener_onPlayerJoin implements Listener {
 		objv.setDisplayName(ChatColor.GOLD + "Stats");
 
 		Score three = objv.getScore(ChatColor.GREEN + "XP: ");
-		three.setScore(xp);		
+		three.setScore(xp);
 		Score two = objv.getScore(ChatColor.GREEN + "Level: ");
 		two.setScore(lvl);
 		Score one = objv.getScore(ChatColor.GREEN + "Geld: ");

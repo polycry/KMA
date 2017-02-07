@@ -1,19 +1,17 @@
 package com.poly.KMA;
 
-
 import org.bukkit.entity.Player;
 
 public class PlayerStats {
 
-	private int money, respect, lvl,xp;
-
+	private int money, respect, lvl, xp;
 
 	public PlayerStats(Player p) {
-	
+
 	}
 
 	// GETTER-SETTER
-	
+
 	public int getXp() {
 		return xp;
 	}
