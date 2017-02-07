@@ -33,6 +33,7 @@ public class Listener_onPlayerQuit implements Listener {
 		cfg.set("money", players.get(p.getName()).getMoney());
 		cfg.set("respect", players.get(p.getName()).getRespect());
 		cfg.set("lvl", players.get(p.getName()).getLvl());
+		cfg.set("xp", players.get(p.getName()).getXp());
 		
 		try {
 			cfg.save(file);

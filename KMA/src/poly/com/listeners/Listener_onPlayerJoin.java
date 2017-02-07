@@ -4,14 +4,21 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.scoreboard.DisplaySlot;
+import org.bukkit.scoreboard.Objective;
+import org.bukkit.scoreboard.Score;
+import org.bukkit.scoreboard.Scoreboard;
 
 import com.poly.KMA.KMA;
 import com.poly.KMA.PlayerStats;
+
 
 public class Listener_onPlayerJoin implements Listener {
 
@@ -27,6 +34,7 @@ public class Listener_onPlayerJoin implements Listener {
 	public void onPlayerJoin(PlayerJoinEvent e) {
 		Player p = e.getPlayer();
 		loadPlayer(p);
+		setScoreBoard(p);
 
 	}
 
@@ -46,6 +54,7 @@ public class Listener_onPlayerJoin implements Listener {
 			cfg.set("money", 10);
 			cfg.set("lvl", 1);
 			cfg.set("respect", 0);
+			cfg.set("xp", 1);
 
 			try {
 				cfg.save(file);
@@ -56,12 +65,13 @@ public class Listener_onPlayerJoin implements Listener {
 		} else {
 			YamlConfiguration cfg = YamlConfiguration.loadConfiguration(file);
 
-			PlayerStats ps = new PlayerStats(p); // laden der Stats in ein Objekt
-														
+			PlayerStats ps = new PlayerStats(p); // laden der Stats in ein
+													// Objekt
 
 			ps.setMoney(cfg.getInt("money"));
 			ps.setRespect(cfg.getInt("respect"));
 			ps.setLvl(cfg.getInt("lvl"));
+			ps.setXp(cfg.getInt("xp"));
 
 			players.put(p.getName(), ps); // Speichern des Objekts mit dem Key
 											// in eine Map
@@ -71,10 +81,32 @@ public class Listener_onPlayerJoin implements Listener {
 											// StatObjekt.
 
 			ps.setLvl(2);
-			p.sendMessage("Dein Lvl: " + ps.getLvl() + " Dein Respect: " + ps.getRespect() + " Dein Geld: " + ps.getMoney());
-			
+			p.sendMessage("Dein Lvl: " + ps.getLvl() + " Dein Respect: " + ps.getRespect() + " Dein Geld: "
+					+ ps.getMoney() + " Deine XP: " + ps.getXp());
 
 		}
+	}
+
+	private void setScoreBoard(Player p) {
+
+		Scoreboard scb = Bukkit.getScoreboardManager().getNewScoreboard();
+		Objective objv = scb.registerNewObjective("test", "dummy");
+		File file = new File("plugins//KMA//configs//" + p.getName() + ".yml");
+		YamlConfiguration cfg = YamlConfiguration.loadConfiguration(file);
+		int lvl = cfg.getInt("lvl");
+		int money = cfg.getInt("money");
+		int respect = cfg.getInt("respect");
+		objv.setDisplaySlot(DisplaySlot.SIDEBAR);
+		objv.setDisplayName(ChatColor.GOLD + "Stats");
+
+		Score two = objv.getScore(ChatColor.GREEN + "Level: ");
+		two.setScore(lvl);
+		Score one = objv.getScore(ChatColor.GREEN + "Geld: ");
+		one.setScore(money);
+		Score zero = objv.getScore(ChatColor.GREEN + "Respekt: ");
+		zero.setScore(respect);
+
+		p.setScoreboard(scb);
 	}
 
 }
