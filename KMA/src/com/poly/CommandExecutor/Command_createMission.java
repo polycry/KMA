@@ -33,10 +33,8 @@ public class Command_createMission implements CommandExecutor {
 						} else {
 							createMission(p, arg);
 						}
-
-					}//Lfknds
-				}//test2
-				
+					}
+				}
 			}
 		} else {
 			cs.sendMessage("Dieser Command ist nur für Spieler!");
