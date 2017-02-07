@@ -36,7 +36,7 @@ public class Command_createMission implements CommandExecutor {
 
 					}//Lfknds
 				}//test2
-
+				
 			}
 		} else {
 			cs.sendMessage("Dieser Command ist nur für Spieler!");
