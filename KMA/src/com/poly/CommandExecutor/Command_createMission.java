@@ -1,4 +1,4 @@
-package com.poly.CommandExecutor; 
+package com.poly.CommandExecutor;
 
 import java.io.File;
 import java.io.IOException;
@@ -33,7 +33,8 @@ public class Command_createMission implements CommandExecutor {
 						} else {
 							createMission(p, arg);
 						}
-					}
+
+					} // test 9
 				}
 			}
 		} else {
