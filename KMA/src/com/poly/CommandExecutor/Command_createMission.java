@@ -34,7 +34,7 @@ public class Command_createMission implements CommandExecutor {
 							createMission(p, arg);
 						}
 
-					} // test 9
+					}
 				}
 			}
 		} else {

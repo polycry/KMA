@@ -38,5 +38,5 @@ public class KMA extends JavaPlugin {
 }
 
 /*
- * TODO: - PlayerStats: Bei den Set Methoden muss noch zurück in die CFG gespeichert werden!!!
+ * TODO: 
  */

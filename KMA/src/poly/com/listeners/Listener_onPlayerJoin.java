@@ -10,6 +10,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Objective;
@@ -36,6 +37,12 @@ public class Listener_onPlayerJoin implements Listener {
 		setScoreBoard(p);
 
 	}
+	
+	@EventHandler 
+    public void onEntityDeath (EntityDeathEvent event) {
+        // Mobs don't drop XP
+        event.setDroppedExp(0);
+    }
 
 	public void loadPlayer(Player p) {
 
