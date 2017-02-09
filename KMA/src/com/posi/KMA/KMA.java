@@ -10,6 +10,7 @@ import com.posi.CommandExecutor.Command_createMission;
 import com.posi.listeners.Listener_onEntityDeath;
 import com.posi.listeners.Listener_onPlayerJoin;
 import com.posi.listeners.Listener_onPlayerQuit;
+import com.posi.listeners.Listener_onPlayerRespawn;
 
 public class KMA extends JavaPlugin {
 
@@ -27,6 +28,8 @@ public class KMA extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(new Listener_onPlayerQuit(this, players), this);
 		
 		getServer().getPluginManager().registerEvents(new Listener_onEntityDeath(this), this);
+		
+		getServer().getPluginManager().registerEvents(new Listener_onPlayerRespawn(this, players), this);
 
 		getCommand("createmission").setExecutor(new Command_createMission(this));
 

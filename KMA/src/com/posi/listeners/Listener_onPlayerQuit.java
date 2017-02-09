@@ -24,7 +24,7 @@ public class Listener_onPlayerQuit implements Listener {
 
 	@EventHandler
 	public void onPlayerQuit(PlayerQuitEvent e) {
-	
+
 		Player p = e.getPlayer();
 
 		File file = new File("plugins//KMA//configs//" + p.getName() + ".yml");

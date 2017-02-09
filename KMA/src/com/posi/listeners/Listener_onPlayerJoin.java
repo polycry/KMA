@@ -10,7 +10,6 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Objective;
@@ -36,8 +35,7 @@ public class Listener_onPlayerJoin implements Listener {
 		loadPlayer(p);
 		setScoreBoard(p);
 
-	}	
-	
+	}
 
 	public void loadPlayer(Player p) {
 
@@ -70,6 +68,7 @@ public class Listener_onPlayerJoin implements Listener {
 			ps.setRespect(cfg.getInt("respect"));
 			ps.setLvl(cfg.getInt("lvl"));
 			ps.setXp(cfg.getInt("xp"));
+			p.setLevel(cfg.getInt("lvl"));
 
 			players.put(p.getName(), ps); // Speichern des Objekts mit dem Key
 			// in eine Map
@@ -85,17 +84,10 @@ public class Listener_onPlayerJoin implements Listener {
 			ps.setRespect(cfg.getInt("respect"));
 			ps.setLvl(cfg.getInt("lvl"));
 			ps.setXp(cfg.getInt("xp"));
-			p.setTotalExperience(cfg.getInt("xp"));
+			p.setLevel(cfg.getInt("lvl"));
 
 			players.put(p.getName(), ps); // Speichern des Objekts mit dem Key in eine Map
-										
-
-			ps = players.get(p.getName()); // p.getName ist der Uniqe Key der Map darin ingetragen ist das StatObjekt.
-										
-			//test message
-			p.sendMessage(
-					"Dein Lvl: " + ps.getLvl() + " Dein Respect: " + ps.getRespect() + " Dein Geld: " + ps.getMoney());
-
+											
 		}
 	}
 
