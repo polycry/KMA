@@ -85,14 +85,14 @@ public class Listener_onPlayerJoin implements Listener {
 			ps.setRespect(cfg.getInt("respect"));
 			ps.setLvl(cfg.getInt("lvl"));
 			ps.setXp(cfg.getInt("xp"));
+			p.setTotalExperience(cfg.getInt("xp"));
 
-			players.put(p.getName(), ps); // Speichern des Objekts mit dem Key
-											// in eine Map
+			players.put(p.getName(), ps); // Speichern des Objekts mit dem Key in eine Map
+										
 
-			ps = players.get(p.getName()); // p.getName ist der Uniqe Key der
-											// Map darin ingetragen ist das
-											// StatObjekt.
-			
+			ps = players.get(p.getName()); // p.getName ist der Uniqe Key der Map darin ingetragen ist das StatObjekt.
+										
+			//test message
 			p.sendMessage(
 					"Dein Lvl: " + ps.getLvl() + " Dein Respect: " + ps.getRespect() + " Dein Geld: " + ps.getMoney());
 
