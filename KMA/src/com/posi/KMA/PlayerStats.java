@@ -1,4 +1,4 @@
-package com.poly.KMA;
+package com.posi.KMA;
 
 import org.bukkit.entity.Player;
 

@@ -1,6 +1,6 @@
 name: KMA
-main: com.poly.KMA.KMA
-version: 1.0
+main: com.posi.KMA.KMA
+version: 0.1
 
 commands: 
   createmission:

@@ -1,4 +1,4 @@
-package com.poly.CommandExecutor;
+package com.posi.CommandExecutor;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,7 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
-import com.poly.KMA.KMA;
+import com.posi.KMA.KMA;
 
 public class Command_createMission implements CommandExecutor {
 

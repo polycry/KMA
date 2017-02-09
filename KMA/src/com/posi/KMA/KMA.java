@@ -1,4 +1,4 @@
-package com.poly.KMA;
+package com.posi.KMA;
 
 import java.io.File;
 import java.util.HashMap;
@@ -6,10 +6,10 @@ import java.util.Map;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.poly.CommandExecutor.Command_createMission;
-
-import poly.com.listeners.Listener_onPlayerJoin;
-import poly.com.listeners.Listener_onPlayerQuit;
+import com.posi.CommandExecutor.Command_createMission;
+import com.posi.listeners.Listener_onEntityDeath;
+import com.posi.listeners.Listener_onPlayerJoin;
+import com.posi.listeners.Listener_onPlayerQuit;
 
 public class KMA extends JavaPlugin {
 
@@ -25,6 +25,8 @@ public class KMA extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(new Listener_onPlayerJoin(this, players), this);
 		
 		getServer().getPluginManager().registerEvents(new Listener_onPlayerQuit(this, players), this);
+		
+		getServer().getPluginManager().registerEvents(new Listener_onEntityDeath(this), this);
 
 		getCommand("createmission").setExecutor(new Command_createMission(this));
 

@@ -1,4 +1,4 @@
-package poly.com.listeners;
+package com.posi.listeners;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,8 +10,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-import com.poly.KMA.KMA;
-import com.poly.KMA.PlayerStats;
+import com.posi.KMA.KMA;
+import com.posi.KMA.PlayerStats;
 
 public class Listener_onPlayerQuit implements Listener {
 
@@ -24,6 +24,7 @@ public class Listener_onPlayerQuit implements Listener {
 
 	@EventHandler
 	public void onPlayerQuit(PlayerQuitEvent e) {
+	
 		Player p = e.getPlayer();
 
 		File file = new File("plugins//KMA//configs//" + p.getName() + ".yml");

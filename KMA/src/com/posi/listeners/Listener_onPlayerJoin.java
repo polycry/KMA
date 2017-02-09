@@ -1,4 +1,4 @@
-package poly.com.listeners;
+package com.posi.listeners;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,8 +17,8 @@ import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Scoreboard;
 
-import com.poly.KMA.KMA;
-import com.poly.KMA.PlayerStats;
+import com.posi.KMA.KMA;
+import com.posi.KMA.PlayerStats;
 
 public class Listener_onPlayerJoin implements Listener {
 
@@ -36,13 +36,8 @@ public class Listener_onPlayerJoin implements Listener {
 		loadPlayer(p);
 		setScoreBoard(p);
 
-	}
+	}	
 	
-	@EventHandler 
-    public void onEntityDeath (EntityDeathEvent event) {
-        // Mobs don't drop XP
-        event.setDroppedExp(0);
-    }
 
 	public void loadPlayer(Player p) {
 
@@ -97,7 +92,7 @@ public class Listener_onPlayerJoin implements Listener {
 			ps = players.get(p.getName()); // p.getName ist der Uniqe Key der
 											// Map darin ingetragen ist das
 											// StatObjekt.
-
+			
 			p.sendMessage(
 					"Dein Lvl: " + ps.getLvl() + " Dein Respect: " + ps.getRespect() + " Dein Geld: " + ps.getMoney());
 
