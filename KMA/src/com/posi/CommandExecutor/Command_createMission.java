@@ -73,7 +73,7 @@ public class Command_createMission implements CommandExecutor {
 			e.printStackTrace();
 		}
 
-		p.sendMessage("Mision erfolgreich erstellt!");
+		p.sendMessage("Mission erfolgreich erstellt!");
 	}
 
 }
