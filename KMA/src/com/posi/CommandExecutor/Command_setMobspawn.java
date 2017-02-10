@@ -9,10 +9,10 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
-public class Command_setMobspawn implements CommandExecutor {//Noch nicht in der plugin.yml!
+public class Command_setMobspawn implements CommandExecutor {//TODO: es fehlt noch das paramter wie viele mobs spawnen sollen? 
 
 	public Command_setMobspawn() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	@Override
