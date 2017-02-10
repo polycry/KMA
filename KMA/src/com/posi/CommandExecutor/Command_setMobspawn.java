@@ -1,4 +1,4 @@
-package com.posi.KMA;
+package com.posi.CommandExecutor;
 
 import java.io.File;
 
@@ -7,7 +7,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
 public class Command_setMobspawn implements CommandExecutor {//Noch nicht in der plugin.yml!
@@ -29,14 +28,10 @@ public class Command_setMobspawn implements CommandExecutor {//Noch nicht in der
 				int z = loc.getBlockZ();
 				
 				File ordner = new File("plugins//KMA//missions");
-				File file = new File("plugins//KMA//missions//missions.yml");
+				File file = new File("plugins//KMA//missions//"+args[0]+".yml");
 				YamlConfiguration cfg = YamlConfiguration.loadConfiguration(file);
 				String ms = "";
-				for (String mission : cfg.getConfigurationSection("").getKeys(false)) {//Es ist unklar, ob nach einem leeren String gesucht werden kann.
-					if (mission.equals(args[0])) {
-						ms = mission;
-					}
-				}
+				
 				if (ms.equals("")) {
 					p.sendMessage("Diese Mission exestiert nicht!");
 					return true;
