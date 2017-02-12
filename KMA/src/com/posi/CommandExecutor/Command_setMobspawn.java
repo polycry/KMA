@@ -31,6 +31,11 @@ public class Command_setMobspawn implements CommandExecutor {//TODO: es fehlt no
 				File ordner = new File("plugins//KMA//configs//missions");
 				File file = new File("plugins//KMA//configs//missions//"+args[0]+".yml");
 				
+				if (!file.exists()) {
+					p.sendMessage("Diese Mission gibt es noch nicht, du musst sie zuerst erstellen.");
+					return false;
+				}
+				
 				YamlConfiguration cfg = YamlConfiguration.loadConfiguration(file);
 				
 				String ms = args[0];
@@ -74,7 +79,7 @@ public class Command_setMobspawn implements CommandExecutor {//TODO: es fehlt no
 			}
 		}
 		
-		return false;
+		return true;
 	}
 
 }
