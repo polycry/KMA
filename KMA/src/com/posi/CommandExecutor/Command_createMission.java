@@ -46,8 +46,8 @@ public class Command_createMission implements CommandExecutor {
 
 	public void createMission(Player p, String[] arg) {
 
-		File ordner = new File("plugins//KMA//missions");
-		File file = new File("plugins//KMA//missions//"+arg[0]+".yml");
+		File ordner = new File("plugins//KMA//configs//missions");
+		File file = new File("plugins//KMA//configs//missions//"+arg[0]+".yml");
 
 		if (!ordner.exists()) {
 			ordner.mkdir();

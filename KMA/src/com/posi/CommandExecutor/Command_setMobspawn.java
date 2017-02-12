@@ -1,6 +1,7 @@
 package com.posi.CommandExecutor;
 
 import java.io.File;
+import java.io.IOException;
 
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -27,10 +28,12 @@ public class Command_setMobspawn implements CommandExecutor {//TODO: es fehlt no
 				int y = loc.getBlockY();
 				int z = loc.getBlockZ();
 				
-				File ordner = new File("plugins//KMA//missions");
-				File file = new File("plugins//KMA//missions//"+args[0]+".yml");
+				File ordner = new File("plugins//KMA//configs//missions");
+				File file = new File("plugins//KMA//configs//missions//"+args[0]+".yml");
+				
 				YamlConfiguration cfg = YamlConfiguration.loadConfiguration(file);
-				String ms = "";
+				
+				String ms = args[0];
 				
 				if (ms.equals("")) {
 					p.sendMessage("Diese Mission exestiert nicht!");
@@ -48,6 +51,13 @@ public class Command_setMobspawn implements CommandExecutor {//TODO: es fehlt no
 				cfg.set(ms+".mobs."+ idOfRecord +".z", z);
 				cfg.set(ms+".mobs."+ idOfRecord +".mobId", args[1]);
 				
+				
+				try {
+					cfg.save(file);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				
 				/*
 				 * 

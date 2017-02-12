@@ -39,7 +39,7 @@ public class Listener_onPlayerJoin implements Listener {
 
 	public void loadPlayer(Player p) {
 
-		File file = new File("plugins//KMA//configs//" + p.getName() + ".yml");
+		File file = new File("plugins//KMA//configs//players//" + p.getName() + ".yml");
 
 		if (!file.exists()) {
 			try {
@@ -95,7 +95,7 @@ public class Listener_onPlayerJoin implements Listener {
 
 		Scoreboard scb = Bukkit.getScoreboardManager().getNewScoreboard();
 		Objective objv = scb.registerNewObjective("test", "dummy");
-		File file = new File("plugins//KMA//configs//" + p.getName() + ".yml");
+		File file = new File("plugins//KMA//configs//players//" + p.getName() + ".yml");
 		YamlConfiguration cfg = YamlConfiguration.loadConfiguration(file);
 		int lvl = cfg.getInt("lvl");
 		int money = cfg.getInt("money");

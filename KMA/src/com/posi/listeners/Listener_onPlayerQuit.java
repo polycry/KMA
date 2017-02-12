@@ -27,7 +27,7 @@ public class Listener_onPlayerQuit implements Listener {
 
 		Player p = e.getPlayer();
 
-		File file = new File("plugins//KMA//configs//" + p.getName() + ".yml");
+		File file = new File("plugins//KMA//configs//players//" + p.getName() + ".yml");
 
 		YamlConfiguration cfg = YamlConfiguration.loadConfiguration(file);
 
