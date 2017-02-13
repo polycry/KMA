@@ -24,11 +24,11 @@ public class Command_createMission implements CommandExecutor {
 			Player p = (Player) cs;
 			if (cmd.getName().equalsIgnoreCase("createmission")) {
 				if (p.hasPermission("createmission")) {
-					if (arg.length < 4) {
+					if (arg.length < 6) {
 						return false;
-					} else if (arg.length == 4) {
-						if (!arg[3].equalsIgnoreCase("headhunter") && !arg[3].equalsIgnoreCase("stealth")
-								&& !arg[3].equalsIgnoreCase("main") && !arg[3].equalsIgnoreCase("protection")) {
+					} else if (arg.length == 6) {
+						if (!arg[5].equalsIgnoreCase("headhunter") && !arg[5].equalsIgnoreCase("stealth")
+								&& !arg[5].equalsIgnoreCase("main") && !arg[5].equalsIgnoreCase("protection")) {
 							return false;
 						} else {
 							createMission(p, arg);
@@ -64,8 +64,10 @@ public class Command_createMission implements CommandExecutor {
 
 		cfg.set(arg[0] + "-name", arg[0]);
 		cfg.set(arg[0] + "cost", arg[1]);
-		cfg.set(arg[0] + "reward", arg[2]);
-		cfg.set(arg[0] + "typ", arg[3]);
+		cfg.set(arg[0] + "money-reward", arg[2]);
+		cfg.set(arg[0] + "xp-reward", arg[3]);
+		cfg.set(arg[0] + "respect-reward", arg[4]);
+		cfg.set(arg[0] + "typ", arg[5]);
 
 		try {
 			cfg.save(file);

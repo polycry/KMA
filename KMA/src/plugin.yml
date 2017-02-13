@@ -4,7 +4,7 @@ version: 0.1
 
 commands: 
   createmission:
-    usage: /createmission [name] [cost] [reward] [typ:headhunter,stealth,main,protect]
+    usage: /createmission [name] [cost] [money-reward] [xp-reward] [respect-reward] [typ:headhunter,stealth,main,protect]
    
   setmobspawn:
     usage: /setmobspawn [mission] [mob]

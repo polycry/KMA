@@ -1,9 +1,12 @@
 package com.posi.Events;
 
+import java.io.File;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Vector;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
@@ -11,6 +14,7 @@ import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Scoreboard;
+import org.yaml.snakeyaml.Yaml;
 
 import com.posi.KMA.PlayerStats;
 
@@ -19,37 +23,47 @@ public class OnMissionComplete extends Event {
 	private static final HandlerList handlers = new HandlerList();
 	private Vector<Player> p;
 	private HashMap<String, PlayerStats> ps;
+	private String mission;
 	
 	
-	public OnMissionComplete(Vector<Player> p, HashMap<String, PlayerStats> ps) {
+	public OnMissionComplete(Vector<Player> p, Map<String, PlayerStats> players, String mission/*MissionObjekt ? empfagnen*/) {
 		super();
 		this.p = p;
-		this.ps = ps;
+		this.ps = (HashMap<String, PlayerStats>) players;
+		this.mission = mission;
+		//Add Lvl
 		syncLvl();
 	}
 
-	private void syncLvl() {
-		for (Player player : p) {
+	private void syncLvl() {	
+			
+		File fileXP = new File("plugins//KMA//configs//lvlSystem//expTable.yml");
+		YamlConfiguration cfgxp = YamlConfiguration.loadConfiguration(fileXP);
+		
+		File fileMission = new File("plugins//KMA//configs//missions//" + mission + ".yml");
+		YamlConfiguration cfgmission = YamlConfiguration.loadConfiguration(fileMission);
+				
+		int neededXp=0; //Kann sehr leicht Bugs verursachen wenn die Abfragen fürs Level nicht 100% stimmen
+		
+		
+		for (Player player : p) {			
 			PlayerStats stats = ps.get(player.getName());
 			
-			//Calculate Max exp
-			/*Total Experience = [Level]2 + 6[Level] (at levels 0-15)
-				2.5[Level]2 - 40.5[Level] + 360 (at levels 16-30)
-				4.5[Level]2 - 162.5[Level] + 2220 (at level 31+)4,5*40*2-162,5*40+2220
-			double totalEXP = 0;
-			if (lvl >= 0 && lvl <= 15  Level zwischen 0 und 15!!!) {
-				totalEXP = lvl*2+6*lvl;
-			}
-			else if (lvl >= 16 && lvl <= 30  Level zwischen 16 und 30!!! ) {
-				totalEXP = (2.5*lvl*2-40.5*lvl+360);
-			}
-			else if (lvl <= 31  Level 31+!!! ) {
-				totalEXP = (4.5*lvl*2-162.5*lvl+2220);//für lvl 40 braucht man 10120
-			}*/
-			
 			//player.setExp();
-			calculateNewStats(stats);
-			float xpBar = calculateProcent(stats.getXp());
+			calculateNewStats(stats,cfgmission);
+			
+			//hier werden Lvl verglichen und dementsprechend aus der cfg auslesen wie viele xp benötigt werden fürs nächste LvlUp
+			if (stats.getLvl()<10) {
+				neededXp = cfgxp.getInt("1-10");
+			}	
+	        
+			//wenn man mehr Xp hat als fürs lvl benötigt wurden wird das lvl mit 1 addiert und die restlcihen Xp auf das nächste LVL übertragen
+			if (stats.getXp() >= neededXp) {
+				stats.setLvl(stats.getLvl()+1);
+				stats.setXp(stats.getXp()-neededXp);  //falls überschüssige Xp nach dem LevelUp überbleiben sollte es mit dieser Berechnung bei nächsten Lvl angerechnet werden				
+			}		
+			
+			float xpBar = calculateProcent(stats.getXp(),neededXp);	
 			player.setExp(xpBar);
 			
 			//update scorebord
@@ -75,14 +89,14 @@ public class OnMissionComplete extends Event {
 		}
 	}
 
-	private void calculateNewStats(PlayerStats stats) {
-		stats.setMoney(stats.getMoney()/*+Mission money*/);
-		stats.setRespect(stats.getRespect()/*+Mission money*/);
-		stats.setXp(stats.getXp()/*+Mission money*/);
+	private void calculateNewStats(PlayerStats stats, YamlConfiguration cfgMission) {
+		stats.setMoney(stats.getMoney() + cfgMission.getInt("money-reward"));  /*+Mission money*/
+		stats.setRespect(stats.getRespect() + cfgMission.getInt("respect-reward") );  /*+Mission money*/
+		stats.setXp(stats.getXp() + cfgMission.getInt("xp-reward"));  /*+Mission money*/
 	}
 
-	private float calculateProcent(float exp) {
-		return exp/1000;//Dies ist nur ein Beispiel für eine umrechnung,falls in Tausenderschritten ein lvl vergeben wird
+	private float calculateProcent(float exp, int neededXP) {		// Diese funktion ist im Momeent eigentlich überschüssig, da es nur eine simple rechnung ist.
+		return exp/neededXP; //Dies ist nur ein Beispiel für eine umrechnung,falls in Tausenderschritten ein lvl vergeben wird
 	}
 
 	@Override
