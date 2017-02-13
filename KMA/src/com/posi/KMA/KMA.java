@@ -22,7 +22,10 @@ public class KMA extends JavaPlugin {
 
 	public void onEnable() {
 		
-		
+		File ordner = new File("plugins//KMA//configs//lvlSystem");
+		if (!ordner.exists()) {
+		 ordner.mkdirs();		 
+		} 
 		
 		File file = new File("plugins//KMA//configs//lvlSystem//expTable.yml");
 		if (!file.exists()) {
@@ -30,7 +33,7 @@ public class KMA extends JavaPlugin {
 				file.createNewFile();
 				writeStandardIntoXpFile(file);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 		}

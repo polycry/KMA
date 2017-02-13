@@ -38,6 +38,11 @@ public class Listener_onPlayerJoin implements Listener {
 	}
 
 	public void loadPlayer(Player p) {
+		
+		File ordner = new File("plugins//KMA//configs//players//");
+		if (!ordner.exists()) {
+			ordner.mkdir();
+		}
 
 		File file = new File("plugins//KMA//configs//players//" + p.getName() + ".yml");
 

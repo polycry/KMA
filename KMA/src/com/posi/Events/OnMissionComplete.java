@@ -31,8 +31,7 @@ public class OnMissionComplete extends Event {
 		super();
 		this.p = p;	
 		this.players = (HashMap<String, PlayerStats>) players;
-		this.mission = mission;
-		//Add Lvl
+		this.mission = mission;		
 		syncLvl();
 	}
 
@@ -88,6 +87,7 @@ public class OnMissionComplete extends Event {
 			zero.setScore(respect);
 
 			player.setScoreboard(scb);
+			players.put(player.getName(), stats);
 		}
 	}
 
