@@ -6,7 +6,6 @@ import java.util.Map;
 import java.util.Vector;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
@@ -15,24 +14,23 @@ import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Scoreboard;
-import org.yaml.snakeyaml.Yaml;
+
 
 import com.posi.KMA.PlayerStats;
 
 public class OnMissionComplete extends Event {
 
 	private static final HandlerList handlers = new HandlerList();
-	//private Vector<Player> p;
-	private Player p;
-	private HashMap<String, PlayerStats> ps;
+	private Vector<Player> p;	
+	
 	private String mission;
+	private HashMap<String, PlayerStats> players;
 	
 	
-	public OnMissionComplete(/*Vector<Player> p*/CommandSender cs, Map<String, PlayerStats> players, String mission/*MissionObjekt ? empfagnen*/) {
+	public OnMissionComplete(Vector<Player> p, Map<String, PlayerStats> players, String mission/*MissionObjekt ? empfagnen*/) {
 		super();
-		//this.p = cs;
-		this.p = (Player) cs;
-		this.ps = (HashMap<String, PlayerStats>) players;
+		this.p = p;	
+		this.players = (HashMap<String, PlayerStats>) players;
 		this.mission = mission;
 		//Add Lvl
 		syncLvl();
@@ -46,11 +44,12 @@ public class OnMissionComplete extends Event {
 		File fileMission = new File("plugins//KMA//configs//missions//" + mission + ".yml");
 		YamlConfiguration cfgmission = YamlConfiguration.loadConfiguration(fileMission);
 				
-		int neededXp=0; //Kann sehr leicht Bugs verursachen wenn die Abfragen fürs Level nicht 100% stimmen
+		int neededXp=0; //Kann sehr leicht Bugs verursachen wenn die Abfragen fürs Level nicht 100% stimmen		
 		
 		
-		for (Player player : p) {			
-			PlayerStats stats = ps.get(player.getName());
+		for (Player player : p) {		
+			
+			PlayerStats stats = players.get(player.getName());
 			
 			//player.setExp();
 			calculateNewStats(stats,cfgmission);
@@ -91,6 +90,8 @@ public class OnMissionComplete extends Event {
 			player.setScoreboard(scb);
 		}
 	}
+
+
 
 	private void calculateNewStats(PlayerStats stats, YamlConfiguration cfgMission) {
 		stats.setMoney(stats.getMoney() + cfgMission.getInt("money-reward"));  /*+Mission money*/

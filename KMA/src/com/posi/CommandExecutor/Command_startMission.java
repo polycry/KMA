@@ -1,13 +1,14 @@
 package com.posi.CommandExecutor;
 
 import java.util.Map;
+import java.util.Vector;
+
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Event;
-import org.bukkit.event.EventHandler;
+
 
 import com.posi.Events.OnMissionComplete;
 import com.posi.KMA.KMA;
@@ -26,12 +27,15 @@ public class Command_startMission implements CommandExecutor {
 	public boolean onCommand(CommandSender cs, Command cmd, String label, String[] args) {
 		if (cmd.equals("startmission")) {
 			if (cs instanceof Player) {
+				Player pl = (Player) cs;
 				if (args.length<1) {
 					return false;
 				}
 				else
 				{
-					 plugin.getServer().getPluginManager().callEvent(new OnMissionComplete(cs,players,args[0]));
+					Vector<Player> p = new Vector();
+					p.add(pl);
+					 plugin.getServer().getPluginManager().callEvent(new OnMissionComplete(p,players,args[0]));
 				}
 				
 			}

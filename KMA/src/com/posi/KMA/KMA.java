@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -22,6 +21,9 @@ import com.posi.listeners.Listener_onPlayerRespawn;
 public class KMA extends JavaPlugin {
 
 	public void onEnable() {
+		
+		
+		
 		File file = new File("plugins//KMA//configs//lvlSystem//expTable.yml");
 		if (!file.exists()) {
 			try {
@@ -67,7 +69,14 @@ public class KMA extends JavaPlugin {
 		cfg.set("20-30", 200);
 		cfg.set("30-40", 200);
 		cfg.set("40-50", 200);
-		cfg.set("50-60", 200);		
+		cfg.set("50-60", 200);	
+		
+		try {
+			cfg.save(file);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 

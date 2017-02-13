@@ -26,9 +26,8 @@ public class Command_setMobspawn implements CommandExecutor {//TODO: es fehlt no
 				
 				int x = loc.getBlockX();
 				int y = loc.getBlockY();
-				int z = loc.getBlockZ();
+				int z = loc.getBlockZ();				
 				
-				File ordner = new File("plugins//KMA//configs//missions");
 				File file = new File("plugins//KMA//configs//missions//"+args[0]+".yml");
 				
 				if (!file.exists()) {
