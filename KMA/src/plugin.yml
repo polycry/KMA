@@ -8,3 +8,6 @@ commands:
    
   setmobspawn:
     usage: /setmobspawn [mission] [mob]
+    
+  startmission:
+    usage: /startmission [name]

@@ -7,11 +7,13 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.posi.CommandExecutor.Command_createMission;
 import com.posi.CommandExecutor.Command_setMobspawn;
+import com.posi.CommandExecutor.Command_startMission;
 import com.posi.listeners.Listener_onEntityDeath;
 import com.posi.listeners.Listener_onPlayerJoin;
 import com.posi.listeners.Listener_onPlayerQuit;
@@ -46,6 +48,8 @@ public class KMA extends JavaPlugin {
 		getCommand("createmission").setExecutor(new Command_createMission(this));
 		
 		getCommand("setmobspawn").setExecutor(new Command_setMobspawn());
+		
+		getCommand("startmission").setExecutor(new Command_startMission(this,players));
 
 		getLogger().info("KMA loaded sucessfully!");
 	}

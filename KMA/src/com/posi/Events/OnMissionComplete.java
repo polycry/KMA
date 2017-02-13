@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Vector;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
@@ -21,14 +22,16 @@ import com.posi.KMA.PlayerStats;
 public class OnMissionComplete extends Event {
 
 	private static final HandlerList handlers = new HandlerList();
-	private Vector<Player> p;
+	//private Vector<Player> p;
+	private Player p;
 	private HashMap<String, PlayerStats> ps;
 	private String mission;
 	
 	
-	public OnMissionComplete(Vector<Player> p, Map<String, PlayerStats> players, String mission/*MissionObjekt ? empfagnen*/) {
+	public OnMissionComplete(/*Vector<Player> p*/CommandSender cs, Map<String, PlayerStats> players, String mission/*MissionObjekt ? empfagnen*/) {
 		super();
-		this.p = p;
+		//this.p = cs;
+		this.p = (Player) cs;
 		this.ps = (HashMap<String, PlayerStats>) players;
 		this.mission = mission;
 		//Add Lvl
