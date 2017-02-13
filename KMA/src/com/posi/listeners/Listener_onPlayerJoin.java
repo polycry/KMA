@@ -118,6 +118,7 @@ public class Listener_onPlayerJoin implements Listener {
 		Score zero = objv.getScore(ChatColor.GREEN + "Respekt: ");
 		zero.setScore(respect);
 
+		
 		p.setScoreboard(scb);
 	}
 

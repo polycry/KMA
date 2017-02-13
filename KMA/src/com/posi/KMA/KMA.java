@@ -54,7 +54,7 @@ public class KMA extends JavaPlugin {
 		
 		getCommand("setmobspawn").setExecutor(new Command_setMobspawn());
 		
-		getCommand("startmission").setExecutor(new Command_startMission(this,players));
+		getCommand("startmission").setExecutor(new Command_startMission(this, players));
 
 		getLogger().info("KMA loaded sucessfully!");
 	}

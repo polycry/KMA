@@ -43,15 +43,15 @@ public class OnMissionComplete extends Event {
 		File fileMission = new File("plugins//KMA//configs//missions//" + mission + ".yml");
 		YamlConfiguration cfgmission = YamlConfiguration.loadConfiguration(fileMission);
 				
-		int neededXp=0; //Kann sehr leicht Bugs verursachen wenn die Abfragen fürs Level nicht 100% stimmen		
-		
+		int neededXp=0; //Kann sehr leicht Bugs verursachen wenn die Abfragen fürs Level nicht 100% stimmen							
 		
 		for (Player player : p) {		
 			
-			PlayerStats stats = players.get(player.getName());
+			player.sendMessage("Juhuu!");
 			
-			//player.setExp();
-			calculateNewStats(stats,cfgmission);
+			PlayerStats stats = players.get(player.getName());			
+			
+			stats = calculateNewStats(stats,cfgmission);
 			
 			//hier werden Lvl verglichen und dementsprechend aus der cfg auslesen wie viele xp benötigt werden fürs nächste LvlUp
 			if (stats.getLvl()<10) {
@@ -93,10 +93,11 @@ public class OnMissionComplete extends Event {
 
 
 
-	private void calculateNewStats(PlayerStats stats, YamlConfiguration cfgMission) {
+	private PlayerStats calculateNewStats(PlayerStats stats, YamlConfiguration cfgMission) {
 		stats.setMoney(stats.getMoney() + cfgMission.getInt("money-reward"));  /*+Mission money*/
-		stats.setRespect(stats.getRespect() + cfgMission.getInt("respect-reward") );  /*+Mission money*/
+		stats.setRespect(stats.getRespect() + cfgMission.getInt("respect-reward"));  /*+Mission money*/
 		stats.setXp(stats.getXp() + cfgMission.getInt("xp-reward"));  /*+Mission money*/
+		return stats;
 	}
 
 	private float calculateProcent(float exp, int neededXP) {		// Diese funktion ist im Momeent eigentlich überschüssig, da es nur eine simple rechnung ist.

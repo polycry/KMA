@@ -20,8 +20,7 @@ public class Listener_onPlayerRespawn implements Listener {
 
 	@EventHandler
 	public void onPlayerRespawn(PlayerRespawnEvent e) {
-		Player p = e.getPlayer();
-		players.get(p.getName()).setLvl(players.get(p.getName()).getLvl()-20);
+		Player p = e.getPlayer();		
 
 	}
 

@@ -28,7 +28,8 @@ public class Listener_onPlayerQuit implements Listener {
 		Player p = e.getPlayer();
 
 		File file = new File("plugins//KMA//configs//players//" + p.getName() + ".yml");
-
+		System.out.println(p.getName() + " " + players.get(p.getName()).getMoney());
+		
 		YamlConfiguration cfg = YamlConfiguration.loadConfiguration(file);
 
 		cfg.set("money", players.get(p.getName()).getMoney());
