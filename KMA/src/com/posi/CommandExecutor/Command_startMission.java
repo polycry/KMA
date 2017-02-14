@@ -21,7 +21,7 @@ public class Command_startMission implements CommandExecutor {
 		this.plugin = plugin;
 		this.players = players;
 	}
-
+//
 	@Override
 	public boolean onCommand(CommandSender cs, Command cmd, String label, String[] args) {
 		
