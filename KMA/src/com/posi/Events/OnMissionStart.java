@@ -33,6 +33,7 @@ public class OnMissionStart extends Event {
 	
 
 	private void startMission() {
+		
 		File missionfile = new File("plugins//KMA//configs//missions//" + mission + ".yml");
 		YamlConfiguration missioncfg = YamlConfiguration.loadConfiguration(missionfile);
 
