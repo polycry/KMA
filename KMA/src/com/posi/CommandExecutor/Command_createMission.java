@@ -24,9 +24,9 @@ public class Command_createMission implements CommandExecutor {
 			Player p = (Player) cs;
 			if (cmd.getName().equalsIgnoreCase("createmission")) {
 				if (p.hasPermission("createmission")) {
-					if (arg.length < 6) {
+					if (arg.length < 7) {
 						return false;
-					} else if (arg.length == 6) {
+					} else if (arg.length == 7) {
 						if (!arg[5].equalsIgnoreCase("headhunter") && !arg[5].equalsIgnoreCase("stealth")
 								&& !arg[5].equalsIgnoreCase("main") && !arg[5].equalsIgnoreCase("protection")) {
 							return false;
@@ -68,6 +68,7 @@ public class Command_createMission implements CommandExecutor {
 		cfg.set("xp-reward", arg[3]);
 		cfg.set("respect-reward", arg[4]);
 		cfg.set("typ", arg[5]);
+		cfg.set("players", arg[6]);
 
 		try {
 			cfg.save(file);

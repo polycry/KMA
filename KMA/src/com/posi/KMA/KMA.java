@@ -40,9 +40,7 @@ public class KMA extends JavaPlugin {
 
 		Map<String, PlayerStats> players = new HashMap<String, PlayerStats>();		//HashMap für Spieler und deren Stats, Spieler Name ist der Unique Key
 
-		getServer().getPluginManager().registerEvents(new Listener_onPlayerJoin(this, players), this);
-		
-		//getServer().getPluginManager().registerEvents(new OnMissionComplete(null, players),this);  Error wenn man es nicht ausklammert
+		getServer().getPluginManager().registerEvents(new Listener_onPlayerJoin(this, players), this);		
 		
 		getServer().getPluginManager().registerEvents(new Listener_onPlayerQuit(this, players), this);
 		

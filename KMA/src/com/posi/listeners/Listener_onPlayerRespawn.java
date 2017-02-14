@@ -20,7 +20,8 @@ public class Listener_onPlayerRespawn implements Listener {
 
 	@EventHandler
 	public void onPlayerRespawn(PlayerRespawnEvent e) {
-		Player p = e.getPlayer();		
+		Player p = e.getPlayer();	
+
 
 	}
 
