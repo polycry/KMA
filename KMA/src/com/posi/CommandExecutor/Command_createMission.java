@@ -63,12 +63,13 @@ public class Command_createMission implements CommandExecutor {
 		YamlConfiguration cfg = YamlConfiguration.loadConfiguration(file);
 
 		cfg.set("name", arg[0]);
-		cfg.set("cost", arg[1]);
-		cfg.set("money-reward", arg[2]);
-		cfg.set("xp-reward", arg[3]);
-		cfg.set("respect-reward", arg[4]);
+		cfg.set("cost", Integer.parseInt(arg[1]));
+		cfg.set("money-reward", Integer.parseInt(arg[2]));
+		cfg.set("xp-reward", Integer.parseInt(arg[3]));
+		cfg.set("respect-reward", Integer.parseInt(arg[4]));
 		cfg.set("typ", arg[5]);
-		cfg.set("players", arg[6]);
+		cfg.set("players", Integer.parseInt(arg[6]));
+		
 
 		try {
 			cfg.save(file);
