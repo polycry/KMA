@@ -87,6 +87,7 @@ public class OnMissionComplete extends Event {
 			zero.setScore(respect);
 
 			player.setScoreboard(scb);
+			players.remove(player.getName());
 			players.put(player.getName(), stats);
 		}
 	}
