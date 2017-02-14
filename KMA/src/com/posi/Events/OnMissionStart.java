@@ -49,7 +49,7 @@ public class OnMissionStart extends Event {
 				while(pTarget==p){
 					pTarget = pArray[r.nextInt(Bukkit.getOnlinePlayers().size())];
 				}				
-				p.sendMessage("Dein Ziel ist " + pTarget.getName());
+				p.sendMessage(ChatColor.GRAY + "Dein Ziel ist " + ChatColor.RED + pTarget.getName());
 				
 			} else {		// Nachträglich Lobby System implementieren! Mit invite 
 				
