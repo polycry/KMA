@@ -24,7 +24,7 @@ public class KMA extends JavaPlugin {
 		
 		File ordner = new File("plugins//KMA//configs//lvlSystem");
 		if (!ordner.exists()) {
-		 ordner.mkdirs();		 
+			ordner.mkdirs();		 
 		} 
 		
 		File file = new File("plugins//KMA//configs//lvlSystem//expTable.yml");
