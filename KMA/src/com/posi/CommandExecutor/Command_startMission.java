@@ -7,7 +7,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import com.posi.Events.OnMissionComplete;
 import com.posi.Events.OnMissionStart;
 import com.posi.KMA.KMA;
 import com.posi.KMA.PlayerStats;
@@ -31,7 +30,7 @@ public class Command_startMission implements CommandExecutor {
 				Player pl = (Player) cs;				
 				Vector<Player> p = new Vector<Player>();
 				p.add(pl);
-				plugin.getServer().getPluginManager().callEvent(new OnMissionComplete(p, players, args[0]))  /*OnMissionStart(pl, players, args[0]))*/;
+				plugin.getServer().getPluginManager().callEvent(/*new OnMissionComplete(p, players, args[0]))*/  new OnMissionStart(pl, players, args[0]));
 
 			} else {
 				return false;

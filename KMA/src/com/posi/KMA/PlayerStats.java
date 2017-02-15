@@ -5,12 +5,23 @@ import org.bukkit.entity.Player;
 public class PlayerStats {
 
 	private int money, respect, lvl, xp;
+	private Player pHeadhunter;
+
 
 	public PlayerStats(Player p) {
-
+		
 	}
 
 	// GETTER-SETTER
+	
+
+	public Player getpHeadhunter() {
+		return pHeadhunter;
+	}
+
+	public void setpHeadhunter(Player pHeadhunter) {
+		this.pHeadhunter = pHeadhunter;
+	}
 
 	public int getXp() {
 		return xp;

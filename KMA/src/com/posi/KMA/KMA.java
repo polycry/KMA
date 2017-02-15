@@ -14,6 +14,7 @@ import com.posi.CommandExecutor.Command_createMission;
 import com.posi.CommandExecutor.Command_setMobspawn;
 import com.posi.CommandExecutor.Command_startMission;
 import com.posi.listeners.Listener_onEntityDeath;
+import com.posi.listeners.Listener_onPlayerDeath;
 import com.posi.listeners.Listener_onPlayerJoin;
 import com.posi.listeners.Listener_onPlayerQuit;
 import com.posi.listeners.Listener_onPlayerRespawn;
@@ -47,6 +48,8 @@ public class KMA extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(new Listener_onEntityDeath(this), this);
 		
 		getServer().getPluginManager().registerEvents(new Listener_onPlayerRespawn(this, players), this);
+		
+		getServer().getPluginManager().registerEvents(new Listener_onPlayerDeath(this,players), this);
 
 		getCommand("createmission").setExecutor(new Command_createMission(this));
 		
@@ -55,6 +58,7 @@ public class KMA extends JavaPlugin {
 		getCommand("startmission").setExecutor(new Command_startMission(this, players));
 
 		getLogger().info("KMA loaded sucessfully!");
+		
 	}
 
 	public void onDisable() {

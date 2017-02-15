@@ -50,6 +50,8 @@ public class OnMissionStart extends Event {
 				while(pTarget==p){
 					pTarget = pArray[r.nextInt(Bukkit.getOnlinePlayers().size())];
 				}				
+				players.get(pTarget.getName()).setpHeadhunter(p);	//Hier wird der Spieler der den Auftrag annimmt in den Target eingetragen!
+				
 				p.sendMessage(ChatColor.GRAY + "Dein Ziel ist " + ChatColor.RED + pTarget.getName());
 				
 			} else {		// Nachträglich Lobby System implementieren! Mit invite 
