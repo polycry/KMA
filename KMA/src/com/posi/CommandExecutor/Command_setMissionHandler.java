@@ -1,7 +1,10 @@
 package com.posi.CommandExecutor;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Vector;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -13,10 +16,12 @@ import org.bukkit.entity.Villager;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import net.md_5.bungee.api.ChatColor;
+import com.posi.customObjects.KVillager;
 
 public class Command_setMissionHandler implements CommandExecutor {
 
+	public static Vector<com.posi.customObjects.KVillager> missionHandlers = new Vector<com.posi.customObjects.KVillager>();
+	
 	public Command_setMissionHandler() {
 		// TODO Auto-generated constructor stub
 	}
@@ -68,6 +73,10 @@ public class Command_setMissionHandler implements CommandExecutor {
 				villagerCfg.set("Villagers."+id+".yaw", yaw);
 				villagerCfg.set("Villagers."+id+".pitch", pitch);
 				villagerCfg.set("Villagers."+id+".world", world);
+				
+				missionHandlers.addElement(new KVillager(id, v));
+				
+				sender.sendMessage(ChatColor.GREEN + "Mission-Handler erfolgreich erstellt!");
 			}
 			else {
 				sender.sendMessage("Dieser Command ist nur für Spieler!");
