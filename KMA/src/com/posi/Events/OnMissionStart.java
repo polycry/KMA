@@ -40,9 +40,13 @@ public class OnMissionStart extends Event {
 		if (missioncfg.getString("typ").equals("headhunter")){
 			
 			if (missioncfg.getInt("players") == 1) {
-				
+				if (Bukkit.getOnlinePlayers().size() == 1) {
+					p.sendMessage("Es wurde kein Autrag für dich gefunden!");
+					return;
+				}
 				p.sendMessage(ChatColor.GREEN + "[Lobby] " + ChatColor.GRAY + "Du kannst deinen Auftrag nun starten.");
 				Player[] pArray = new Player[Bukkit.getOnlinePlayers().size()];
+				
 				pArray = Bukkit.getOnlinePlayers().toArray(pArray);
 				Random r = new Random();
 				Player pTarget = pArray[r.nextInt(Bukkit.getOnlinePlayers().size())];
