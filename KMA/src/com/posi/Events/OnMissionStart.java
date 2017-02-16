@@ -41,7 +41,7 @@ public class OnMissionStart extends Event {
 			
 			if (missioncfg.getInt("players") == 1) {
 				if (Bukkit.getOnlinePlayers().size() == 1) {
-					p.sendMessage("Es wurde kein Autrag für dich gefunden!");
+					p.sendMessage("Es wurde kein Autrag für dich gefunden!");   //Verhindert eine Endlosschleife falls nur ein SPieler online ist
 					return;
 				}
 				p.sendMessage(ChatColor.GREEN + "[Lobby] " + ChatColor.GRAY + "Du kannst deinen Auftrag nun starten.");
@@ -55,7 +55,7 @@ public class OnMissionStart extends Event {
 					pTarget = pArray[r.nextInt(Bukkit.getOnlinePlayers().size())];
 				}				
 				players.get(pTarget.getName()).setpHeadhunter(p);	//Hier wird der Spieler der den Auftrag annimmt in den Target eingetragen!
-				
+				players.get(p.getName()).setMission(mission);		//Headhunter set Mission
 				p.sendMessage(ChatColor.GRAY + "Dein Ziel ist " + ChatColor.RED + pTarget.getName());
 				
 			} else {		// Nachträglich Lobby System implementieren! Mit invite 

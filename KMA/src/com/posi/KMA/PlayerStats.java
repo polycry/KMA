@@ -6,6 +6,9 @@ public class PlayerStats {
 
 	private int money, respect, lvl, xp;
 	private Player pHeadhunter;
+	private String mission;
+
+
 
 
 	public PlayerStats(Player p) {
@@ -13,6 +16,14 @@ public class PlayerStats {
 	}
 
 	// GETTER-SETTER
+	
+	public String getMission() {
+		return mission;
+	}
+
+	public void setMission(String mission) {
+		this.mission = mission;
+	}
 	
 
 	public Player getpHeadhunter() {

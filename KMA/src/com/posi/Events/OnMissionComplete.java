@@ -27,7 +27,7 @@ public class OnMissionComplete extends Event {
 	private HashMap<String, PlayerStats> players;
 	
 	
-	public OnMissionComplete(Vector<Player> p, Map<String, PlayerStats> players, String mission/*MissionObjekt ? empfagnen*/) {
+	public OnMissionComplete(Vector<Player> p, Map<String, PlayerStats> players, String mission) {
 		super();
 		this.p = p;	
 		this.players = (HashMap<String, PlayerStats>) players;

@@ -23,20 +23,23 @@ public class Command_startMission implements CommandExecutor {
 
 	@Override
 	public boolean onCommand(CommandSender cs, Command cmd, String label, String[] args) {
-		
-		//safe command draus mochen
-		if (cmd.getName().equals("startmission")) {
-			if (cs instanceof Player) {
-				Player pl = (Player) cs;				
-				Vector<Player> p = new Vector<Player>();
-				p.add(pl);
-				plugin.getServer().getPluginManager().callEvent(/*new OnMissionComplete(p, players, args[0]))*/  new OnMissionStart(pl, players, args[0]));
 
-			} else {
-				return false;
+		if (cs instanceof Player) {
+			if (cmd.getName().equals("startmission")) {
+				if (cs instanceof Player) {
+					
+					Player pl = (Player) cs;
+					Vector<Player> p = new Vector<Player>();
+					p.add(pl);
+					plugin.getServer().getPluginManager().callEvent(
+							/* new OnMissionComplete(p, players, args[0])) */ new OnMissionStart(pl, players, args[0]));
+
+				} else {
+					cs.sendMessage("Dieser Command ist nur für Spieler!");
+				}
 			}
+
 		}
 		return true;
 	}
-
 }

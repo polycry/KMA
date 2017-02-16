@@ -27,7 +27,7 @@ public class Command_createMission implements CommandExecutor {
 					if (arg.length < 7) {
 						return false;
 					} else if (arg.length == 7) {
-						if (!arg[5].equalsIgnoreCase("headhunter") && !arg[5].equalsIgnoreCase("stealth")
+						if (!arg[5].equalsIgnoreCase("headhunter") && !arg[5].equalsIgnoreCase("stealth")			//Hier müssen Missionstypen geaddet werden!
 								&& !arg[5].equalsIgnoreCase("main") && !arg[5].equalsIgnoreCase("protection")) {
 							return false;
 						} else {

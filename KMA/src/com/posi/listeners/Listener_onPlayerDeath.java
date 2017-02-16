@@ -32,12 +32,15 @@ public class Listener_onPlayerDeath implements Listener{
 		}
 		else
 		{
-			 if (e.getEntity().getKiller()==players.get(p.getName()).getpHeadhunter()) {
+			Player pHeadHunter = e.getEntity().getKiller();
+			
+			 if (pHeadHunter==players.get(p.getName()).getpHeadhunter()) {
 				 Vector<Player> pVec = new Vector<Player>();
-				 pVec.add(e.getEntity().getKiller());					
-					plugin.getServer().getPluginManager().callEvent(new OnMissionComplete(pVec, players, "test")); 	//"test" muss noch irgendwie ersetzt werden. keine Ahnung wie. Irgendwie 
-			 }																										//muss ich wissen welche mission der headhunter gespielt hat und sie 
-			 																										// einfügen!
+				 pVec.add(e.getEntity().getKiller());		
+				 	players.get(p.getName()).setpHeadhunter(null);        //der Headhunter Auftrag ist somit abgeschlossen!
+					plugin.getServer().getPluginManager().callEvent(new OnMissionComplete(pVec, players, players.get(pHeadHunter.getName()).getMission())); 	//"test" muss noch irgendwie ersetzt werden. keine Ahnung wie. Irgendwie 
+			 }																																					//muss ich wissen welche mission der headhunter gespielt hat und sie 
+			 																																					// einfügen!
 			
 		}
 		

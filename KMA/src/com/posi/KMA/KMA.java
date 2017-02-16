@@ -38,15 +38,23 @@ public class KMA extends JavaPlugin {
 		
 		File file = new File("plugins//KMA//configs//lvlSystem//expTable.yml");
 		File villagerShop = new File("plugins//KMA//configs//villagers.yml");
+		
 		if (!file.exists()) {
 			try {
-				file.createNewFile();
-				villagerShop.createNewFile();
+				file.createNewFile();				
 				writeStandardIntoXpFile(file);
-			} catch (IOException e) {
-				
+			} catch (IOException e) {				
 				e.printStackTrace();
 			}
+			
+		if (!villagerShop.exists()) {
+			try {
+				villagerShop.createNewFile();
+			} catch (IOException e) {				
+				e.printStackTrace();
+			}
+		}
+			
 		}
 		
 		loadMissionHandlers(villagerShop);
