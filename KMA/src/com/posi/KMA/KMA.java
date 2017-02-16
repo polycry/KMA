@@ -98,8 +98,6 @@ public class KMA extends JavaPlugin {
 				v.setCustomNameVisible(true);
 				v.setInvulnerable(true);
 				v.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 356000, 356000));//give the villager the slowness effect so he can't move
-				
-				//missing missions!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 			}
 		}
 	}
