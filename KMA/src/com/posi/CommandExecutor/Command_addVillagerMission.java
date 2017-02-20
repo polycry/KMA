@@ -1,6 +1,7 @@
 package com.posi.CommandExecutor;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Vector;
 
 import org.bukkit.ChatColor;
@@ -42,6 +43,12 @@ public class Command_addVillagerMission implements CommandExecutor {
 			
 			villagerCfg.set("Villagers." + args[0] + ".missions", missions);
 			sender.sendMessage(ChatColor.GREEN + "Mission wurde erfolgreich hinzugefügt!");
+			
+			try {
+				villagerCfg.save(villagerShop);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 			
 			//reload missions
 			

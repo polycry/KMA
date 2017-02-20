@@ -46,6 +46,7 @@ public class Command_setMissionHandler implements CommandExecutor {
 					
 				}
 				*/
+				
 				Player p = (Player) sender;
 				
 				Location loc = p.getLocation();
