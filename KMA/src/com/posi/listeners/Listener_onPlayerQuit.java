@@ -11,7 +11,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import com.posi.KMA.KMA;
-import com.posi.KMA.PlayerStats;
+import com.posi.customObjects.PlayerStats;
 
 public class Listener_onPlayerQuit implements Listener {
 

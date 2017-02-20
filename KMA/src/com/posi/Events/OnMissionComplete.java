@@ -15,8 +15,7 @@ import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Scoreboard;
 
-
-import com.posi.KMA.PlayerStats;
+import com.posi.customObjects.PlayerStats;
 
 public class OnMissionComplete extends Event {
 

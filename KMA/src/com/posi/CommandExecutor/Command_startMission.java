@@ -9,7 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import com.posi.Events.OnMissionStart;
 import com.posi.KMA.KMA;
-import com.posi.KMA.PlayerStats;
+import com.posi.customObjects.PlayerStats;
 
 public class Command_startMission implements CommandExecutor {
 

@@ -1,7 +1,7 @@
 package com.posi.CommandExecutor;
 
 import java.io.File;
-import java.util.HashMap;
+import java.io.IOException;
 import java.util.Vector;
 
 import org.bukkit.ChatColor;
@@ -35,17 +35,17 @@ public class Command_setMissionHandler implements CommandExecutor {
 			YamlConfiguration villagerCfg = YamlConfiguration.loadConfiguration(villagerShop);
 			if (sender instanceof Player) {
 				
-				for (String id : villagerCfg.getConfigurationSection("Villagers").getKeys(false)) {
+				/*for (String id : villagerCfg.getConfigurationSection("Villagers").getKeys(false)) {
 					if (id.equalsIgnoreCase(args[0])) {
 						sender.sendMessage(ChatColor.RED + "Dieser Name ist schon vergeben!");
-						return true;
+						return true;  //net return false?
 					}
 				}
 				
 				for (String string : args) {
 					
 				}
-				
+				*/
 				Player p = (Player) sender;
 				
 				Location loc = p.getLocation();
@@ -73,6 +73,12 @@ public class Command_setMissionHandler implements CommandExecutor {
 				villagerCfg.set("Villagers."+id+".yaw", yaw);
 				villagerCfg.set("Villagers."+id+".pitch", pitch);
 				villagerCfg.set("Villagers."+id+".world", world);
+				
+				try {
+					villagerCfg.save(villagerShop);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 				
 				missionHandlers.addElement(new KVillager(id, v));
 				

@@ -10,7 +10,7 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 
 import com.posi.Events.OnMissionComplete;
 import com.posi.KMA.KMA;
-import com.posi.KMA.PlayerStats;
+import com.posi.customObjects.PlayerStats;
 
 public class Listener_onPlayerDeath implements Listener{
 	

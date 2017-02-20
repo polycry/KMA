@@ -1,4 +1,4 @@
-package com.posi.KMA;
+package com.posi.customObjects;
 
 import org.bukkit.entity.Player;
 

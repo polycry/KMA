@@ -17,7 +17,7 @@ import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Scoreboard;
 
 import com.posi.KMA.KMA;
-import com.posi.KMA.PlayerStats;
+import com.posi.customObjects.PlayerStats;
 
 public class Listener_onPlayerJoin implements Listener {
 

@@ -21,7 +21,7 @@ public class Command_addVillagerMission implements CommandExecutor {
 		if (args.length == 2) {
 			File file = new File("plugins//KMA//configs//missions//"+args[1]+".yml");
 			if (!file.exists()) {
-				sender.sendMessage(ChatColor.RED + "Diese Mission exestiert nicht!");
+				sender.sendMessage(ChatColor.RED + "Diese Mission existiert nicht!");
 				return true;
 			}
 			
@@ -29,7 +29,7 @@ public class Command_addVillagerMission implements CommandExecutor {
 			YamlConfiguration villagerCfg = YamlConfiguration.loadConfiguration(villagerShop);
 			
 			if (!villagerCfg.contains(args[0])) {
-				sender.sendMessage(ChatColor.RED + "Diese Mission exestiert nicht!");
+				sender.sendMessage(ChatColor.RED + "Diese Mission existiert nicht!");
 				return true;
 			}
 			

@@ -11,3 +11,9 @@ commands:
     
   startmission:
     usage: /startmission [name]
+
+  setMissionHandler:
+    usage: /setmissionhandler
+  
+  addVillagerMission:
+    usage: /addvillagermission 

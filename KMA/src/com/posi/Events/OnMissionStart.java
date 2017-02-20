@@ -13,7 +13,7 @@ import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
 import com.posi.KMA.Lobby;
-import com.posi.KMA.PlayerStats;
+import com.posi.customObjects.PlayerStats;
 
 public class OnMissionStart extends Event {
 
